@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Allow } from 'class-validator';
 import { Allowed } from './allowed.entity';
 import { IAllowedLeaves, ILeaveApplication } from './leave.dto';
@@ -12,6 +12,10 @@ import { Leave } from './leave.entity';
 @Injectable()
 export class LeaveService {
   async allowedLeaves(data: IAllowedLeaves) {
+if(data.leaveType !== 'earnedLeaves' && data.leaveType !== 'casualLeaves' && data.leaveType !== 'compensatoryLeaves'){
+  throw new HttpException('you must enter the type of leave between casualLeaves , compensatoryLeaves &  earnedLeaves',HttpStatus.BAD_REQUEST)
+}
+
     const application = new Allowed();
     application.leaveType = data.leaveType;
     application.allowedLeaves = data.allowedLeaves;
