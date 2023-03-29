@@ -21,13 +21,4 @@ export class LeaveController {
     return await this.leaveService.application(data);
   }
 
-  // @Get('/status')
-  // async leaveStatus(@Req() request) {
-  //   return await this.leaveService.leaveStatus(request.user);
-  // }
-
-  // @Get('/applications')
-  // async leaveApplications(@Req() request) {
-  //   return await this.leaveService.leaveApplications(request.user);
-  // }
 }

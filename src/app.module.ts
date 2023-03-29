@@ -14,7 +14,7 @@ const DB = TypeOrmModule.forRoot({
   port: 3306,
   username: 'root',
   password: '',
-  database: 'leaveattendancechunk',
+  database: 'leaveattendance-chunk',
   entities: [Leave,Allowed],
   synchronize: true,
 });

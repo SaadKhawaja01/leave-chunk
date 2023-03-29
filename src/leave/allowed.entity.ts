@@ -4,13 +4,13 @@ import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
 export class Allowed extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
-
   @Column()
-  casualLeaves: string;
-
+  leaveType: string;
   @Column()
-  compensatoryLeaves: string;
-
+  allowedLeaves: number;
   @Column()
-  earnedLeaves: string;
+  consumedLaves: number;
+  @Column()
+  remainingLeaves: number;
+
 }

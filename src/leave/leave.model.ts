@@ -1,9 +1,12 @@
-
 import { ApiProperty } from '@nestjs/swagger';
-import { IsArray, IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import {
+  IsArray,
+  IsDate,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+} from 'class-validator';
 import { IAllowedLeaves, ILeaveApplication } from './leave.dto';
-
-
 
 export class LeaveApplication implements ILeaveApplication {
   @ApiProperty()
@@ -17,9 +20,9 @@ export class LeaveApplication implements ILeaveApplication {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  leaveType: string
+  leaveType: string;
   @IsString()
-  @ApiProperty()
+  @ApiProperty({ default: 'Casual' })
   @IsNotEmpty()
   descriptionLeave: string;
   @IsString()
@@ -28,19 +31,26 @@ export class LeaveApplication implements ILeaveApplication {
   reason: string;
 }
 
-
-
 export class AllowedLeaves implements IAllowedLeaves {
-    @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  casualLeaves: string;
-  @IsString()
   @ApiProperty()
   @IsNotEmpty()
-  compensatoryLeaves: string;
   @IsString()
+  leaveType: string;
   @ApiProperty()
   @IsNotEmpty()
-  earnedLeaves: string;
+  @IsNumber()
+  allowedLeaves: number;
+
+  //   @ApiProperty()
+  // @IsNotEmpty()
+  // @IsString()
+  // casualLeaves: string;
+  // @IsString()
+  // @ApiProperty()
+  // @IsNotEmpty()
+  // compensatoryLeaves: string;
+  // @IsString()
+  // @ApiProperty()
+  // @IsNotEmpty()
+  // earnedLeaves: string;
 }
