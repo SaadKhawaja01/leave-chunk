@@ -11,9 +11,6 @@ import { LeaveService } from './leave.service';
 export class LeaveController {
   constructor(private readonly leaveService: LeaveService) {}
 
-
-
-  
   @Post('/allowedLeaves')
   async allowedLeaves(@Body() data: AllowedLeaves) {
     return await this.leaveService.allowedLeaves(data);
@@ -24,10 +21,8 @@ export class LeaveController {
     return await this.leaveService.Leaves();
   }
 
-
   @Post('/application')
   async application(@Body() data: LeaveApplication) {
     return await this.leaveService.application(data);
   }
-
 }
