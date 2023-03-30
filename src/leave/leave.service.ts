@@ -12,6 +12,7 @@ import { Leave } from './leave.entity';
 @Injectable()
 export class LeaveService {
   async allowedLeaves(data: IAllowedLeaves) {
+    //to get the value between these three
 if(data.leaveType !== 'earnedLeaves' && data.leaveType !== 'casualLeaves' && data.leaveType !== 'compensatoryLeaves'){
   throw new HttpException('you must enter the type of leave between casualLeaves , compensatoryLeaves &  earnedLeaves',HttpStatus.BAD_REQUEST)
 }
