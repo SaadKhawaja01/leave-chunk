@@ -24,6 +24,17 @@ if(data.leaveType !== 'earnedLeaves' && data.leaveType !== 'casualLeaves' && dat
     return application;
   }
 
+
+
+
+async Leaves() {
+ 
+    const allowedLeavesData = await Allowed.find();
+
+    return  allowedLeavesData
+  }
+
+
   async application(data: ILeaveApplication) {
     // to get number of days
     let test = data.toDate.toString().split('T'); //T replace
