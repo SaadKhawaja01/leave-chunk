@@ -9,7 +9,7 @@ export class Allowed extends BaseEntity {
   @Column()
   allowedLeaves: number;
   @Column()
-  consumedLaves: number;
+  consumedLeaves: number;
   @Column()
   remainingLeaves: number;
 

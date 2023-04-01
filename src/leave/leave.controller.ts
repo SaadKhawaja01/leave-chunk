@@ -1,7 +1,6 @@
-import { Body, Controller, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Post} from '@nestjs/common';
 import { Get } from '@nestjs/common/decorators';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { Allowed } from './allowed.entity';
+import { ApiTags } from '@nestjs/swagger';
 import { AllowedLeaves, LeaveApplication } from './leave.model';
 
 import { LeaveService } from './leave.service';

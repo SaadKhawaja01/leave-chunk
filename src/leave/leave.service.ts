@@ -1,5 +1,4 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { Allow } from 'class-validator';
 import { Allowed } from './allowed.entity';
 import { IAllowedLeaves, ILeaveApplication } from './leave.dto';
 import { Leave } from './leave.entity';
@@ -47,23 +46,23 @@ export class LeaveService {
     //updating consumed leaves
     if (data.descriptionLeave == 'Casual') {
       const Leavesdata = await Allowed.findOneBy({ leaveType: 'casualLeaves' });
-      Leavesdata.consumedLaves += diff;
+      Leavesdata.consumedLeaves += diff;
       Leavesdata.remainingLeaves =
-        Leavesdata.allowedLeaves - Leavesdata.consumedLaves;
+        Leavesdata.allowedLeaves - Leavesdata.consumedLeaves;
       await Leavesdata.save();
     } else if (data.descriptionLeave == 'Compensatory') {
       const Leavesdata = await Allowed.findOneBy({
         leaveType: 'compensatoryLeaves',
       });
-      Leavesdata.consumedLaves += diff;
+      Leavesdata.consumedLeaves += diff;
       Leavesdata.remainingLeaves =
-        Leavesdata.allowedLeaves - Leavesdata.consumedLaves;
+        Leavesdata.allowedLeaves - Leavesdata.consumedLeaves;
       await Leavesdata.save();
     } else {
       const Leavesdata = await Allowed.findOneBy({ leaveType: 'earnedLeaves' });
-      Leavesdata.consumedLaves += diff;
+      Leavesdata.consumedLeaves += diff;
       Leavesdata.remainingLeaves =
-        Leavesdata.allowedLeaves - Leavesdata.consumedLaves;
+        Leavesdata.allowedLeaves - Leavesdata.consumedLeaves;
       await Leavesdata.save();
     }
 

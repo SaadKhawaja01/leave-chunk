@@ -40,17 +40,5 @@ export class AllowedLeaves implements IAllowedLeaves {
   @IsNotEmpty()
   @IsNumber()
   allowedLeaves: number;
-
-  //   @ApiProperty()
-  // @IsNotEmpty()
-  // @IsString()
-  // casualLeaves: string;
-  // @IsString()
-  // @ApiProperty()
-  // @IsNotEmpty()
-  // compensatoryLeaves: string;
-  // @IsString()
-  // @ApiProperty()
-  // @IsNotEmpty()
-  // earnedLeaves: string;
+  
 }
