@@ -17,7 +17,6 @@ export class Leave extends BaseEntity {
   @Column()
   descriptionLeave: string;
 
-
   @Column()
   reason: string;
 }

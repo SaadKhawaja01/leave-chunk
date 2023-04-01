@@ -26,4 +26,4 @@ const DB = TypeOrmModule.forRoot({
 
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
