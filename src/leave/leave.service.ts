@@ -47,7 +47,7 @@ export class LeaveService {
       const Leavesdata = await Allowed.findOneBy({ leaveType: 'casualLeaves' });
 
       //to check remaining leaves is not zero
-      if (Leavesdata.remainingLeaves - diff <= 0) {
+      if (Leavesdata.remainingLeaves - diff < 0) {
         throw new HttpException(
           'you have consumend maximum number of leaves, your remaining leaves is : ' +
             Leavesdata.remainingLeaves,
@@ -65,7 +65,7 @@ export class LeaveService {
       });
 
       //to check remaining leaves is not zero
-      if (Leavesdata.remainingLeaves - diff <= 0) {
+      if (Leavesdata.remainingLeaves - diff < 0) {
         throw new HttpException(
           'you have consumend maximum number of leaves, your remaining leaves is : ' +
             Leavesdata.remainingLeaves,
@@ -81,7 +81,7 @@ export class LeaveService {
       const Leavesdata = await Allowed.findOneBy({ leaveType: 'earnedLeaves' });
 
       //to check remaining leaves is not zero
-      if (Leavesdata.remainingLeaves - diff <= 0) {
+      if (Leavesdata.remainingLeaves - diff < 0) {
         throw new HttpException(
           'you have consumend maximum number of leaves, your remaining leaves is : ' +
             Leavesdata.remainingLeaves,
