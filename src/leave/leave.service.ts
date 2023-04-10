@@ -49,9 +49,7 @@ export class LeaveService {
       //to check remaining leaves is not zero
       if (Leavesdata.remainingLeaves - diff < 0) {
         throw new HttpException(
-          'you have consumend maximum number of leaves, your remaining leaves is : ' +
-            Leavesdata.remainingLeaves,
-          HttpStatus.BAD_REQUEST,
+          'Maximum leaves consumed!', HttpStatus.BAD_REQUEST
         );
       }
       //updating data
@@ -67,9 +65,7 @@ export class LeaveService {
       //to check remaining leaves is not zero
       if (Leavesdata.remainingLeaves - diff < 0) {
         throw new HttpException(
-          'you have consumend maximum number of leaves, your remaining leaves is : ' +
-            Leavesdata.remainingLeaves,
-          HttpStatus.BAD_REQUEST,
+          'Maximum leaves consumed!', HttpStatus.BAD_REQUEST,
         );
       }
       //updating data
@@ -83,9 +79,7 @@ export class LeaveService {
       //to check remaining leaves is not zero
       if (Leavesdata.remainingLeaves - diff < 0) {
         throw new HttpException(
-          'you have consumend maximum number of leaves, your remaining leaves is : ' +
-            Leavesdata.remainingLeaves,
-          HttpStatus.BAD_REQUEST,
+          'Maximum leaves consumed!', HttpStatus.BAD_REQUEST,
         );
       }
       //updating data
