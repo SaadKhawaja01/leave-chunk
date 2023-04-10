@@ -3,8 +3,6 @@ import { Allowed } from './allowed.entity';
 import { IAllowedLeaves, ILeaveApplication } from './leave.dto';
 import { Leave } from './leave.entity';
 
-
-
 @Injectable()
 export class LeaveService {
   async allowedLeaves(data: IAllowedLeaves) {
@@ -23,6 +21,7 @@ export class LeaveService {
     const application = new Allowed();
     application.leaveType = data.leaveType;
     application.allowedLeaves = data.allowedLeaves;
+    application.remainingLeaves = data.allowedLeaves;
     await application.save();
     return application;
   }
@@ -46,6 +45,16 @@ export class LeaveService {
     //updating consumed leaves
     if (data.descriptionLeave == 'Casual') {
       const Leavesdata = await Allowed.findOneBy({ leaveType: 'casualLeaves' });
+
+      //to check remaining leaves is not zero
+      if (Leavesdata.remainingLeaves - diff <= 0) {
+        throw new HttpException(
+          'you have consumend maximum number of leaves, your remaining leaves is : ' +
+            Leavesdata.remainingLeaves,
+          HttpStatus.BAD_REQUEST,
+        );
+      }
+      //updating data
       Leavesdata.consumedLeaves += diff;
       Leavesdata.remainingLeaves =
         Leavesdata.allowedLeaves - Leavesdata.consumedLeaves;
@@ -54,18 +63,39 @@ export class LeaveService {
       const Leavesdata = await Allowed.findOneBy({
         leaveType: 'compensatoryLeaves',
       });
+
+      //to check remaining leaves is not zero
+      if (Leavesdata.remainingLeaves - diff <= 0) {
+        throw new HttpException(
+          'you have consumend maximum number of leaves, your remaining leaves is : ' +
+            Leavesdata.remainingLeaves,
+          HttpStatus.BAD_REQUEST,
+        );
+      }
+      //updating data
       Leavesdata.consumedLeaves += diff;
       Leavesdata.remainingLeaves =
         Leavesdata.allowedLeaves - Leavesdata.consumedLeaves;
       await Leavesdata.save();
     } else {
       const Leavesdata = await Allowed.findOneBy({ leaveType: 'earnedLeaves' });
+
+      //to check remaining leaves is not zero
+      if (Leavesdata.remainingLeaves - diff <= 0) {
+        throw new HttpException(
+          'you have consumend maximum number of leaves, your remaining leaves is : ' +
+            Leavesdata.remainingLeaves,
+          HttpStatus.BAD_REQUEST,
+        );
+      }
+      //updating data
       Leavesdata.consumedLeaves += diff;
       Leavesdata.remainingLeaves =
         Leavesdata.allowedLeaves - Leavesdata.consumedLeaves;
       await Leavesdata.save();
     }
 
+    //creation of new application
     const leave = new Leave();
     leave.toDate = data.toDate;
     leave.fromDate = data.fromDate;
