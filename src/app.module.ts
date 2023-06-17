@@ -9,11 +9,11 @@ import { Allowed } from './leave/allowed.entity';
 //for Sql Db
 const DB = TypeOrmModule.forRoot({
   type: 'mysql',
-  host: 'containers-us-west-133.railway.app',
-  port: 7969,
+  host: 'localhost',
+  port: 3306,
   username: 'root',
-  password: 'AdV0KC7xXErt00gZpCU3',
-  database: 'railway',
+  password: '',
+  database: 'leaveChunk',
   entities: [Leave, Allowed],
   synchronize: true,
 });
